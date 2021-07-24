@@ -1,16 +1,11 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 500 })
   name: string;
 
   @Column()
@@ -21,7 +16,4 @@ export class Student {
 
   @Column()
   payment_method: string;
-
-  @CreateDateColumn()
-  created_at: Date;
 }

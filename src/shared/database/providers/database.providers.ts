@@ -1,6 +1,6 @@
 import { createConnection } from 'typeorm';
 
-console.log(__dirname);
+console.log(process.env.DB_HOST);
 
 export const databaseProviders = [
   {
