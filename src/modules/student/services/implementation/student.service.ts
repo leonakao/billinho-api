@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ICreateStudentDTO } from '../../dtos/icreate-student-dto';
 import { Student } from '../../entities/student.entity';
 import { StudentFactory } from '../../factories/student-factory';

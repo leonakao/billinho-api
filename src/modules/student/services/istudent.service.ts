@@ -1,4 +1,3 @@
-import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
 import { Student } from '../entities/student.entity';
 
 interface IStudentService {
