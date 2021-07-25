@@ -5,7 +5,8 @@ import { IStudentsService } from '../services/istudents.service';
 @Controller('students')
 export class StudentsController {
   constructor(
-    @Inject('IStudentsService') private studentsService: IStudentsService,
+    @Inject('StudentsService')
+    private studentsService: IStudentsService,
   ) {}
 
   @Post()

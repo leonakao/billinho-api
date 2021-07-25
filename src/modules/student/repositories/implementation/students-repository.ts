@@ -6,7 +6,7 @@ import { IStudentsRepository } from '../istudents-repository';
 class StudentsRepository implements IStudentsRepository {
   private repository: Repository<Student>;
 
-  constructor(@Inject('DATABASE_CONNECTION') connection: Connection) {
+  constructor(@Inject('DatabaseConnection') connection: Connection) {
     this.repository = connection.getRepository(Student);
   }
 

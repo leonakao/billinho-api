@@ -3,13 +3,13 @@ import { StudentsService } from '../services/implementation/students.service';
 
 export const studentProviders = [
   {
-    provide: 'IStudentsRepository',
+    provide: 'StudentsRepository',
     useClass: StudentsRepository,
-    inject: ['DATABASE_CONNECTION'],
+    inject: ['DatabaseConnection'],
   },
   {
-    provide: 'IStudentsService',
+    provide: 'StudentsService',
     useClass: StudentsService,
-    inject: ['IStudentsRepository'],
+    inject: ['StudentsRepository'],
   },
 ];

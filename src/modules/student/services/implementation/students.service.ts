@@ -9,7 +9,7 @@ import { IStudentsService } from '../istudents.service';
 @Injectable()
 export class StudentsService implements IStudentsService {
   constructor(
-    @Inject('IStudentsRepository')
+    @Inject('StudentsRepository')
     private repository: IStudentsRepository,
   ) {}
 
