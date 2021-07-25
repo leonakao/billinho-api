@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { ICreateStudentDTO } from '../../dtos/icreate-student-dto';
 import { Student } from '../../entities/student.entity';
 import { StudentFactory } from '../../factories/student-factory';
-import { IStudentRepository } from '../../repositories/istudent-repository';
-import { IStudentService } from '../istudent.service';
+import { IStudentsRepository } from '../../repositories/istudents-repository';
+import { IStudentsService } from '../istudents.service';
 
 @Injectable()
-export class StudentService implements IStudentService {
-  constructor(private repository: IStudentRepository) {}
+export class StudentsService implements IStudentsService {
+  constructor(private repository: IStudentsRepository) {}
 
   async create({ name, cpf, birthdate, payment_method }): Promise<Student> {
     const studentData = {

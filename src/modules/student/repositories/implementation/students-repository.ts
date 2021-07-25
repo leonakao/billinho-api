@@ -1,8 +1,8 @@
 import { Connection, Repository } from 'typeorm';
 import { Student } from '../../entities/student.entity';
-import { IStudentRepository } from '../istudent-repository';
+import { IStudentsRepository } from '../istudents-repository';
 
-class StudentRepository implements IStudentRepository {
+class StudentsRepository implements IStudentsRepository {
   private repository: Repository<Student>;
 
   constructor(connection: Connection) {
@@ -14,4 +14,4 @@ class StudentRepository implements IStudentRepository {
   }
 }
 
-export { StudentRepository };
+export { StudentsRepository };

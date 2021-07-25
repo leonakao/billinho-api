@@ -1,15 +1,15 @@
-import { StudentRepository } from '../repositories/implementation/student-repository';
-import { StudentService } from '../services/implementation/student.service';
+import { StudentsRepository } from '../repositories/implementation/students-repository';
+import { StudentsService } from '../services/implementation/students.service';
 
 export const studentProviders = [
   {
-    provide: 'IStudentRepository',
-    useClass: StudentRepository,
+    provide: 'IStudentsRepository',
+    useClass: StudentsRepository,
     inject: ['DATABASE_CONNECTION'],
   },
   {
-    provide: 'IStudentService',
-    useClass: StudentService,
+    provide: 'IStudentsService',
+    useClass: StudentsService,
     inject: ['IStudentRepository'],
   },
 ];

@@ -1,7 +1,7 @@
 import { Student } from '../entities/student.entity';
 
-interface IStudentRepository {
+interface IStudentsRepository {
   save(student: Student): Promise<Student>;
 }
 
-export { IStudentRepository };
+export { IStudentsRepository };
