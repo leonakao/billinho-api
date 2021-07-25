@@ -1,5 +1,4 @@
 interface ICreateStudentDTO {
-  id: number;
   name: string;
   cpf: string;
   birthdate: Date;

@@ -1,11 +1,15 @@
-import { Connection, Repository } from 'typeorm';
-import { Student } from '../entities/student.entity';
+import { StudentRepository } from '../repositories/implementation/student-repository';
+import { StudentService } from '../services/implementation/student.service';
 
 export const studentProviders = [
   {
-    provide: 'STUDENT_REPOSITORY',
-    useFactory: (connection: Connection): Repository<Student> =>
-      connection.getRepository(Student),
+    provide: 'IStudentRepository',
+    useClass: StudentRepository,
     inject: ['DATABASE_CONNECTION'],
+  },
+  {
+    provide: 'IStudentService',
+    useClass: StudentService,
+    inject: ['IStudentRepository'],
   },
 ];

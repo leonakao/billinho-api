@@ -5,7 +5,6 @@ import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
 export class Student {
   constructor(studentData: ICreateStudentDTO) {
     if (studentData) {
-      this.id = studentData.id;
       this.name = studentData.name;
       this.cpf = studentData.cpf;
       this.birthdate = studentData.birthdate;
