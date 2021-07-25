@@ -10,6 +10,6 @@ export const studentProviders = [
   {
     provide: 'IStudentsService',
     useClass: StudentsService,
-    inject: ['IStudentRepository'],
+    inject: ['IStudentsRepository'],
   },
 ];

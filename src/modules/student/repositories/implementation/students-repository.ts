@@ -1,3 +1,4 @@
+import { Inject } from '@nestjs/common';
 import { Connection, Repository } from 'typeorm';
 import { Student } from '../../entities/student.entity';
 import { IStudentsRepository } from '../istudents-repository';
@@ -5,7 +6,7 @@ import { IStudentsRepository } from '../istudents-repository';
 class StudentsRepository implements IStudentsRepository {
   private repository: Repository<Student>;
 
-  constructor(connection: Connection) {
+  constructor(@Inject('DATABASE_CONNECTION') connection: Connection) {
     this.repository = connection.getRepository(Student);
   }
 

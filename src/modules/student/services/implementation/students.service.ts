@@ -1,3 +1,4 @@
+import { Inject } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { ICreateStudentDTO } from '../../dtos/icreate-student-dto';
 import { Student } from '../../entities/student.entity';
@@ -7,7 +8,10 @@ import { IStudentsService } from '../istudents.service';
 
 @Injectable()
 export class StudentsService implements IStudentsService {
-  constructor(private repository: IStudentsRepository) {}
+  constructor(
+    @Inject('IStudentsRepository')
+    private repository: IStudentsRepository,
+  ) {}
 
   async create({ name, cpf, birthdate, payment_method }): Promise<Student> {
     const studentData = {

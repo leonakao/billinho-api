@@ -1,10 +1,12 @@
-import { Controller, HttpCode, Post, Body } from '@nestjs/common';
+import { Controller, HttpCode, Post, Body, Inject } from '@nestjs/common';
 import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
 import { IStudentsService } from '../services/istudents.service';
 
 @Controller('students')
 export class StudentsController {
-  constructor(private studentsService: IStudentsService) {}
+  constructor(
+    @Inject('IStudentsService') private studentsService: IStudentsService,
+  ) {}
 
   @Post()
   @HttpCode(201)
