@@ -1,4 +1,4 @@
-import { StudentsRepository } from '../repositories/implementation/students-repository';
+import { StudentsRepository } from '../repositories/implementation/students.repository';
 import { CreateStudentsService } from '../services/implementation/create-students.service';
 import { ListStudentsService } from '../services/implementation/list-students.service';
 

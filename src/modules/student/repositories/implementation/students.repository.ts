@@ -2,7 +2,7 @@ import { Inject } from '@nestjs/common';
 import { IListRepositoryOptions } from 'src/shared/interfaces';
 import { Connection, Repository } from 'typeorm';
 import { Student } from '../../entities/student.entity';
-import { IStudentsRepository } from '../istudents-repository';
+import { IStudentsRepository } from '../istudents.repository';
 
 class StudentsRepository implements IStudentsRepository {
   private repository: Repository<Student>;

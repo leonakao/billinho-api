@@ -1,6 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
-import { IStudentsRepository } from '../../repositories/istudents-repository';
+import { IStudentsRepository } from '../../repositories/istudents.repository';
 import {
   IListStudentsPaginated,
   IListStudentsService,

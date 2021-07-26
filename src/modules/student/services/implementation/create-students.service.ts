@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { ICreateStudentDTO } from '../../dtos/icreate-student-dto';
 import { Student } from '../../entities/student.entity';
 import { StudentFactory } from '../../factories/student-factory';
-import { IStudentsRepository } from '../../repositories/istudents-repository';
+import { IStudentsRepository } from '../../repositories/istudents.repository';
 import { ICreateStudentsService } from '../icreate-students.service';
 
 @Injectable()
