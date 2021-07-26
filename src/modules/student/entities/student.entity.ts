@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
 
-@Entity()
+@Entity('students')
 export class Student {
   constructor(studentData: ICreateStudentDTO) {
     if (studentData) {

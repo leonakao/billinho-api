@@ -10,6 +10,7 @@ export class CreateStudentsTable1627260083346 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'name',

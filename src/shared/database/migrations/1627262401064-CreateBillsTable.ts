@@ -10,6 +10,7 @@ export class CreateBillsTable1627262401064 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'amount',

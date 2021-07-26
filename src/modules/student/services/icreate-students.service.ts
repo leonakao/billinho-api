@@ -1,7 +1,7 @@
 import { Student } from '../entities/student.entity';
 
-interface IStudentsService {
+interface ICreateStudentsService {
   create({ name, cpf, birthdate, payment_method }): Promise<Student>;
 }
 
-export { IStudentsService };
+export { ICreateStudentsService };

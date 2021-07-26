@@ -1,5 +1,5 @@
 import { StudentsRepository } from '../repositories/implementation/students-repository';
-import { StudentsService } from '../services/implementation/students.service';
+import { CreateStudentsService } from '../services/implementation/create-students.service';
 
 export const studentProviders = [
   {
@@ -8,8 +8,8 @@ export const studentProviders = [
     inject: ['DatabaseConnection'],
   },
   {
-    provide: 'StudentsService',
-    useClass: StudentsService,
+    provide: 'CreateStudentsService',
+    useClass: CreateStudentsService,
     inject: ['StudentsRepository'],
   },
 ];

@@ -4,10 +4,10 @@ import { ICreateStudentDTO } from '../../dtos/icreate-student-dto';
 import { Student } from '../../entities/student.entity';
 import { StudentFactory } from '../../factories/student-factory';
 import { IStudentsRepository } from '../../repositories/istudents-repository';
-import { IStudentsService } from '../istudents.service';
+import { ICreateStudentsService } from '../icreate-students.service';
 
 @Injectable()
-export class StudentsService implements IStudentsService {
+export class CreateStudentsService implements ICreateStudentsService {
   constructor(
     @Inject('StudentsRepository')
     private repository: IStudentsRepository,

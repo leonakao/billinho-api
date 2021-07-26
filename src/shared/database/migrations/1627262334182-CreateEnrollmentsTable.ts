@@ -10,6 +10,7 @@ export class CreateEnrollmentsTable1627262334182 implements MigrationInterface {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
           },
           {
             name: 'amount',
