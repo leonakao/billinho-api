@@ -13,7 +13,7 @@ export class CreateStudentsService implements ICreateStudentsService {
     private repository: IStudentsRepository,
   ) {}
 
-  async create({ name, cpf, birthdate, payment_method }): Promise<Student> {
+  async execute({ name, cpf, birthdate, payment_method }): Promise<Student> {
     const studentData = {
       name,
       cpf,
