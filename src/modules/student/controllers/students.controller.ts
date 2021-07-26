@@ -12,7 +12,7 @@ export class StudentsController {
   @Post()
   @HttpCode(201)
   async create(@Body() studentData: ICreateStudentDTO) {
-    const student = await this.createStudentsService.create(studentData);
+    const student = await this.createStudentsService.execute(studentData);
 
     return {
       id: student.id,
