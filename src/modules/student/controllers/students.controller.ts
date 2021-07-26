@@ -23,8 +23,6 @@ export class StudentsController {
   @Post()
   @HttpCode(201)
   async create(@Body() studentData: ICreateStudentDTO) {
-    return studentData;
-
     const student = await this.createStudentsService.execute(studentData);
 
     return {

@@ -4,10 +4,12 @@ import {
   IsNotEmpty,
   IsOptional,
   IsIn,
+  Validate,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { TransformToDate } from 'src/shared/utils';
 import { PaymentTypes } from '../enums/payment-types.enum';
+import { CpfUnique } from '../rules/cpf-unique';
 
 export class ICreateStudentDTO {
   @IsNotEmpty()
@@ -15,6 +17,7 @@ export class ICreateStudentDTO {
 
   @MaxLength(15)
   @IsNotEmpty()
+  @Validate(CpfUnique)
   cpf: string;
 
   @Transform(({ value }) => TransformToDate(value))

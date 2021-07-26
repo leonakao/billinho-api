@@ -5,6 +5,8 @@ interface IStudentsRepository {
   save(student: Student): Promise<Student>;
 
   list(options: IListRepositoryOptions): Promise<Student[]>;
+
+  findByCpf(cpf: string): Promise<Student>;
 }
 
 export { IStudentsRepository };

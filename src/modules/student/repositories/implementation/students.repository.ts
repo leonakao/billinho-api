@@ -23,6 +23,12 @@ class StudentsRepository implements IStudentsRepository {
       skip: count * (page - 1),
     });
   }
+
+  async findByCpf(cpf: string): Promise<Student> {
+    return await this.repository.findOneOrFail({
+      cpf,
+    });
+  }
 }
 
 export { StudentsRepository };
