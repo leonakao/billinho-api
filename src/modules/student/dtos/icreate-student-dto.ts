@@ -9,7 +9,7 @@ import {
 import { Transform } from 'class-transformer';
 import { TransformToDate } from 'src/shared/utils';
 import { PaymentTypes } from '../enums/payment-types.enum';
-import { CpfUnique } from '../rules/cpf-unique';
+import { CpfUnique, CpfValid } from '../rules';
 
 export class ICreateStudentDTO {
   @IsNotEmpty()
@@ -18,6 +18,7 @@ export class ICreateStudentDTO {
   @MaxLength(15)
   @IsNotEmpty()
   @Validate(CpfUnique)
+  @Validate(CpfValid)
   cpf: string;
 
   @Transform(({ value }) => TransformToDate(value))
