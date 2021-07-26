@@ -1,7 +1,5 @@
 import { createConnection, getConnectionOptions } from 'typeorm';
 
-console.log(__dirname);
-
 export const databaseProviders = [
   {
     provide: 'DatabaseConnection',
