@@ -16,6 +16,7 @@ services:
     networks:
     - kool_local
     - kool_global
+    restart: on-failure
   database:
     image: postgres:13-alpine
     ports:
