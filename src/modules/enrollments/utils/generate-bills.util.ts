@@ -1,7 +1,7 @@
 import { Bill } from '../entities/bill.entity';
 import { BillStatusTypes } from '../enums/bill-status-types.enum';
 import { BillFactory } from '../factories/bill.factory';
-import { GenerateBillDate } from './generate-bill-date.util';
+import { GenerateBillDueDate } from './generate-bill-due-date.util';
 
 export function GenerateBills({
   number: amount,
@@ -20,7 +20,7 @@ export function GenerateBills({
     bills.push(
       BillFactory.create({
         amount: amountByInstallment,
-        due_date: GenerateBillDate(due_day, currentInstallment),
+        due_date: GenerateBillDueDate(due_day, currentInstallment),
         status: BillStatusTypes.Open,
       }),
     );
