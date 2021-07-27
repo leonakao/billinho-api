@@ -4,14 +4,14 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
-import { IStudentsRepository } from '../repositories/istudents.repository';
+import { IStudentRepository } from '../repositories/istudent.repository';
 
 @ValidatorConstraint({ name: 'CpfUnique', async: true })
 @Injectable()
 export class CpfUnique implements ValidatorConstraintInterface {
   constructor(
-    @Inject('StudentsRepository')
-    private repository: IStudentsRepository,
+    @Inject('StudentRepository')
+    private repository: IStudentRepository,
   ) {}
 
   async validate(cpf: string) {

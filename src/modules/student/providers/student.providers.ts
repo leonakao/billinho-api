@@ -1,23 +1,23 @@
-import { StudentsRepository } from '../repositories/implementation/students.repository';
+import { StudentRepository } from '../repositories/implementation/student.repository';
 import { CpfUnique, CpfValid } from '../rules';
-import { CreateStudentsService } from '../services/implementation/create-students.service';
+import { CreateStudentService } from '../services/implementation/create-student.service';
 import { ListStudentsService } from '../services/implementation/list-students.service';
 
 export const studentProviders = [
   {
-    provide: 'StudentsRepository',
-    useClass: StudentsRepository,
+    provide: 'StudentRepository',
+    useClass: StudentRepository,
     inject: ['DatabaseConnection'],
   },
   {
-    provide: 'CreateStudentsService',
-    useClass: CreateStudentsService,
-    inject: ['StudentsRepository'],
+    provide: 'CreateStudentService',
+    useClass: CreateStudentService,
+    inject: ['StudentRepository'],
   },
   {
     provide: 'ListStudentsService',
     useClass: ListStudentsService,
-    inject: ['StudentsRepository'],
+    inject: ['StudentRepository'],
   },
   CpfUnique,
   CpfValid,

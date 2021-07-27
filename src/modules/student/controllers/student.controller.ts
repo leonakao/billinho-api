@@ -1,13 +1,13 @@
 import { Controller, HttpCode, Post, Body, Inject, Get } from '@nestjs/common';
 import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
-import { ICreateStudentsService } from '../services/icreate-students.service';
+import { ICreateStudentService } from '../services/icreate-student.service';
 import { IListStudentsService } from '../services/ilist-students.service';
 
 @Controller('students')
-export class StudentsController {
+export class StudentController {
   constructor(
-    @Inject('CreateStudentsService')
-    private createStudentsService: ICreateStudentsService,
+    @Inject('CreateStudentService')
+    private createStudentService: ICreateStudentService,
     @Inject('ListStudentsService')
     private listStudentsService: IListStudentsService,
   ) {}
@@ -23,7 +23,7 @@ export class StudentsController {
   @Post()
   @HttpCode(201)
   async create(@Body() studentData: ICreateStudentDTO) {
-    const student = await this.createStudentsService.execute(studentData);
+    const student = await this.createStudentService.execute(studentData);
 
     return {
       id: student.id,

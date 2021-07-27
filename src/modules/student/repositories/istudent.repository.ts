@@ -1,7 +1,7 @@
 import { IListRepositoryOptions } from 'src/shared/interfaces/ilist-repository-options';
 import { Student } from '../entities/student.entity';
 
-interface IStudentsRepository {
+interface IStudentRepository {
   save(student: Student): Promise<Student>;
 
   list(options: IListRepositoryOptions): Promise<Student[]>;
@@ -9,4 +9,4 @@ interface IStudentsRepository {
   findByCpf(cpf: string): Promise<Student>;
 }
 
-export { IStudentsRepository };
+export { IStudentRepository };

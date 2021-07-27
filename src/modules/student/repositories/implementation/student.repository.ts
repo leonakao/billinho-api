@@ -2,9 +2,9 @@ import { Inject } from '@nestjs/common';
 import { IListRepositoryOptions } from 'src/shared/interfaces';
 import { Connection, Repository } from 'typeorm';
 import { Student } from '../../entities/student.entity';
-import { IStudentsRepository } from '../istudents.repository';
+import { IStudentRepository } from '../istudent.repository';
 
-class StudentsRepository implements IStudentsRepository {
+class StudentRepository implements IStudentRepository {
   private repository: Repository<Student>;
 
   constructor(@Inject('DatabaseConnection') connection: Connection) {
@@ -31,4 +31,4 @@ class StudentsRepository implements IStudentsRepository {
   }
 }
 
-export { StudentsRepository };
+export { StudentRepository };
