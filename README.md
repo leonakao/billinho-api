@@ -72,10 +72,9 @@ Visto que as matrículas não tem qualquer interação direta com os Alunos, é 
 
 ### Diretórios
 
-Aleḿ dos diretórios padrões seguridos pelo Laravel, foram criados mais 3 diretórios para organizar e separar as funcionalidades dentro do projeto:
+Aleḿ dos diretórios padrões seguridos pelo Nest (Controllers, Services, Providers), foram criados mais 3 diretórios para organizar e separar as funcionalidades dentro do projeto:
 
 1. **Repositories** - Responsáveis por intermediar a relação entre a aplicação e o acesso/modificação do banco de dados
-2. **Services** - Responsáveis por gerenciar as regras de negócios, utilizar os repositórios e são consumidos pelos controllers.
 3. **Utils** - Códigos mais simples que podem ser utilizados em diferentes locais da aplicação para realizar uma ação específica.
 4. **Rules** - Regras de validação customizadas, são utilizados durante a validação da requisição da API.
 
