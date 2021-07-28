@@ -2,8 +2,10 @@ scripts:
   nest: kool exec app nest
   psql: kool exec -e PGPASSWORD=$DB_PASSWORD database psql -U $DB_USERNAME $DB_DATABASE
   setup:
+  - cp .env.example .env
   - kool docker kooldev/node:14 yarn install
   - kool start
+  - kool run migrate
   yarn: kool exec app yarn
   make:migration: kool run yarn typeorm migration:create -n
   migrate: kool run yarn typeorm migration:run
