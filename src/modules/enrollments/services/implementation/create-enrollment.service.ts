@@ -1,6 +1,5 @@
 import { Inject } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
-import { ICreateEnrollmentDTO } from '../../dtos/icreate-enrollment.dto';
 import { Enrollment } from '../../entities/enrollment.entity';
 import { EnrollmentFactory } from '../../factories/enrollment.factory';
 import { IBillRepository } from '../../repositories/ibill.repository';
@@ -17,8 +16,18 @@ export class CreateEnrollmentService implements ICreateEnrollmentService {
     private billRepository: IBillRepository,
   ) {}
 
-  async execute(enrollmentData: ICreateEnrollmentDTO): Promise<Enrollment> {
-    const enrollmentShell = EnrollmentFactory.create(enrollmentData);
+  async execute({
+    amount,
+    installments,
+    due_day,
+    student_id,
+  }): Promise<Enrollment> {
+    const enrollmentShell = EnrollmentFactory.create({
+      amount,
+      installments,
+      due_day,
+      student_id,
+    });
 
     const enrollment = await this.enrollmentRepository.save(enrollmentShell);
 
