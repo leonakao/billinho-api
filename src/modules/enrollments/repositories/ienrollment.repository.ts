@@ -5,6 +5,8 @@ interface IEnrollmentRepository {
   save(enrollment: Enrollment): Promise<Enrollment>;
 
   list(options: IListRepositoryOptions): Promise<Enrollment[]>;
+
+  findByStudent(student_id: number): Promise<Enrollment>;
 }
 
 export { IEnrollmentRepository };

@@ -1,5 +1,4 @@
 import { StudentRepository } from '../repositories/implementation/student.repository';
-import { CpfUnique, CpfValid } from '../rules';
 import { CreateStudentService } from '../services/implementation/create-student.service';
 import { ListStudentsService } from '../services/implementation/list-students.service';
 
@@ -19,6 +18,4 @@ export const studentProviders = [
     useClass: ListStudentsService,
     inject: ['StudentRepository'],
   },
-  CpfUnique,
-  CpfValid,
 ];

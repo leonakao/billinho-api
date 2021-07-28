@@ -24,6 +24,12 @@ class EnrollmentRepository implements IEnrollmentRepository {
       relations: ['bills'],
     });
   }
+
+  async findByStudent(student_id: number): Promise<Enrollment> {
+    return await this.repository.findOneOrFail({
+      student_id,
+    });
+  }
 }
 
 export { EnrollmentRepository };

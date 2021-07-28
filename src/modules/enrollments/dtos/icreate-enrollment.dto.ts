@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsInt, Min, Max } from 'class-validator';
+import { IsNotEmpty, IsInt, Min, Max, Validate } from 'class-validator';
+import { StudentUnique } from '../rules/student-unique';
 
 export class ICreateEnrollmentDTO {
   @IsInt()
@@ -19,5 +20,6 @@ export class ICreateEnrollmentDTO {
 
   @IsInt()
   @IsNotEmpty()
+  @Validate(StudentUnique)
   student_id: number;
 }
