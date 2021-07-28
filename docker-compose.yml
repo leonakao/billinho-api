@@ -22,9 +22,9 @@ services:
     ports:
     - ${KOOL_DATABASE_PORT:-5432}:5432
     environment:
-      POSTGRES_DB: ${DB_DATABASE-database}
-      POSTGRES_USER: ${DB_USERNAME-user}
-      POSTGRES_PASSWORD: ${DB_PASSWORD-pass}
+      POSTGRES_DB: ${TYPEORM_DATABASE-database}
+      POSTGRES_USER: ${TYPEORM_USERNAME-user}
+      POSTGRES_PASSWORD: ${TYPEORM_PASSWORD-pass}
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
     - database:/var/lib/postgresql/data:delegated
