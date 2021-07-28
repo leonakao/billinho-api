@@ -13,6 +13,10 @@ export class CreateEnrollmentsTable1627262334182 implements MigrationInterface {
             isGenerated: true,
           },
           {
+            name: 'student_id',
+            type: 'int',
+          },
+          {
             name: 'amount',
             type: 'int',
           },
@@ -28,6 +32,16 @@ export class CreateEnrollmentsTable1627262334182 implements MigrationInterface {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
+          },
+        ],
+        foreignKeys: [
+          {
+            name: 'Student',
+            referencedTableName: 'students',
+            referencedColumnNames: ['id'],
+            columnNames: ['student_id'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),

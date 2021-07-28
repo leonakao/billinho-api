@@ -13,6 +13,10 @@ export class CreateBillsTable1627262401064 implements MigrationInterface {
             isGenerated: true,
           },
           {
+            name: 'enrollment_id',
+            type: 'int',
+          },
+          {
             name: 'amount',
             type: 'int',
           },
@@ -28,6 +32,16 @@ export class CreateBillsTable1627262401064 implements MigrationInterface {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
+          },
+        ],
+        foreignKeys: [
+          {
+            name: 'Enrollment',
+            referencedTableName: 'enrollments',
+            referencedColumnNames: ['id'],
+            columnNames: ['enrollment_id'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),

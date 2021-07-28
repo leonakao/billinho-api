@@ -1,5 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Student } from 'src/modules/student/entities/student.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { ICreateEnrollmentDTO } from '../dtos/icreate-enrollment.dto';
+import { Bill } from './bill.entity';
 
 @Entity('enrollments')
 export class Enrollment {
@@ -22,4 +30,13 @@ export class Enrollment {
 
   @Column('integer')
   due_day: number;
+
+  @Column('integer')
+  student_id: number;
+
+  @ManyToOne(() => Student, (student) => student.enrollments)
+  student: Student;
+
+  @OneToMany(() => Bill, (bill) => bill.enrollment)
+  bills: Bill[];
 }

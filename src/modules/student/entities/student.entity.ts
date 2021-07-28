@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Enrollment } from 'src/modules/enrollments/entities/enrollment.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
 
 @Entity('students')
@@ -26,4 +27,7 @@ export class Student {
 
   @Column()
   payment_method: string;
+
+  @OneToMany(() => Enrollment, (enrollment) => enrollment.student)
+  enrollments: Enrollment[];
 }
