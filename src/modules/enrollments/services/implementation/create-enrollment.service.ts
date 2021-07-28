@@ -31,14 +31,14 @@ export class CreateEnrollmentService implements ICreateEnrollmentService {
 
     const enrollment = await this.enrollmentRepository.save(enrollmentShell);
 
-    const bills = GenerateBills(
+    enrollment.bills = GenerateBills(
       enrollment.amount,
       enrollment.installments,
       enrollment.due_day,
       enrollment.id,
     );
 
-    await this.billRepository.saveMany(bills);
+    await this.billRepository.saveMany(enrollment.bills);
 
     return enrollment;
   }

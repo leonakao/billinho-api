@@ -1,4 +1,4 @@
-import { Enrollment } from 'src/modules/enrollments/entities/enrollment.entity';
+import { Enrollment } from '../../enrollments/entities/enrollment.entity';
 import {
   Entity,
   Column,

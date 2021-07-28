@@ -7,7 +7,7 @@ import {
   Validate,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { TransformToDate } from 'src/shared/utils';
+import { TransformToDate } from '../../../shared/utils';
 import { PaymentTypes } from '../enums/payment-types.enum';
 import { CpfUnique, CpfValid } from '../rules';
 
