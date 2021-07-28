@@ -12,8 +12,9 @@ Princípios/Técnicas/Conceitos utilizados:
 Tecnologias/Ferramentas utilizadas:
 - NodeJs
 - NestJs
+- Typescript
+- TypeORM
 - Swagger
-- TypeOrm
 
 ## Instruções
 
