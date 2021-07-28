@@ -36,9 +36,9 @@ services:
       - pg_isready
       - -q
       - -d
-      - $DB_DATABASE
+      - $TYPEORM_DATABASE
       - -U
-      - $DB_USERNAME
+      - $TYPEORM_USERNAME
   cache:
     image: redis:6-alpine
     volumes:
