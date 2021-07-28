@@ -21,6 +21,7 @@ class EnrollmentRepository implements IEnrollmentRepository {
     return await this.repository.find({
       take: count,
       skip: count * (page - 1),
+      relations: ['bills'],
     });
   }
 }
