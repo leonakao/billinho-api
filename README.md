@@ -1,73 +1,119 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Billinho API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+O Projeto consiste no desenvolvimento de uma API para cadastro e consulta de alunos, assim como suas matrículas e mensalidades.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Princípios/Técnicas/Conceitos utilizados:
+- Clean Code
+- SOLID
+- Design Patterns
+- Keep It Simple, Stupid (KISS)
+- Don't Repeat Yourself (DRY)
 
-## Description
+Tecnologias/Ferramentas utilizadas:
+- NodeJs
+- NestJs
+- Swagger
+- TypeOrm
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Instruções
 
-## Installation
+O projeto foi desenvolvido com a utilização do Docker, junto ao Kool.
+
+O [Kool](https://kool.dev) é uma ferramenta utlizada para simplificação do uso do Docker e padronização do ambiente de desenvolvimento frente a vários projetos e diferentes desenvolvedores. É recomendável a instalação do mesmo para execução do projeto, porém ela não é obrigatória.
+
+### Criação e Configurações Iniciais
+
+#### Clonando o Projeto
+
+1. `git clone git@github.com:leonakaodev/billinho-api.git` - Clona o projeto para o seu computador
+2. `cd billinho-api` - Acessa o diretório recém criado do projeto
+
+#### Configurando o projeto
+
+**Usando Kool:**
+
+1. `kool run setup`
+
+**Apenas Docker:**
+
+1. `cp .env.example .env` - Copia as variáveis de ambiente.
+2. `docker-compose up --build -d` - Inicializa os containers em background
+3. `docker exec billinho-api_app_1 yarn` - Instala as dependências via yarn
+4. `docker exec billinho-api_app_1 yarn typeorm migration:run` - Executa as migrations do TypeOrm
+
+*Note:* "billinho-api_app_1" é o nome do container que está rodando o app, em caso de erros, verifique se ele está correto.
+
+#### Inicializações Futuras
+
+**Usando Kool:**
+
+1. `kool start`
+
+**Apenas Docker:**
+
+1. `docker-compose up --build -d`
+
+## Aplicação e Considerações
+
+### Rotas
+
+Foi utilizado o swagger para documentar as rotas da aplicação, verifique: `http://localhost:3000/api`
+
+### Arquitetura
+
+O projeto atualmente consiste em uma arquitetura monolítica, aonde o Client acessa a API e posteriormente a API acessa o banco de dados. Essa única aplicação é responsável pelo cadastro dos alunos e das matrículas, ficando responsável também por gerar as mensalidades.
+
+Visto que as matrículas não tem qualquer interação direta com os Alunos, é possível esta API em dois serviços distintos. Um para cadastro dos alunos e outro para criação das matrículas e mensalidades. Podendo ambos utilizarem o mesmo banco de dados, ou não.
+
+### Modelagem de Banco
+
+![image](https://user-images.githubusercontent.com/49794183/127354119-e90f4896-aa76-4de1-844e-ebc039f9a065.png)
+
+### Diretórios
+
+Aleḿ dos diretórios padrões seguridos pelo Laravel, foram criados mais 3 diretórios para organizar e separar as funcionalidades dentro do projeto:
+
+1. **Repositories** - Responsáveis por intermediar a relação entre a aplicação e o acesso/modificação do banco de dados
+2. **Services** - Responsáveis por gerenciar as regras de negócios, utilizar os repositórios e são consumidos pelos controllers.
+3. **Utils** - Códigos mais simples que podem ser utilizados em diferentes locais da aplicação para realizar uma ação específica.
+4. **Rules** - Regras de validação customizadas, são utilizados durante a validação da requisição da API.
+
+## Testes
+
+A fim de garantir as restrições especificadas para o projeto, a respeito das mensalidades geradas automaticamente, foram criados alguns testes:
+
+### Rodar
 
 ```bash
-$ npm install
+# Using kool
+kool run yarn test
+
+# Using only docker
+docker exec billinho-api_app_1 yarn test
 ```
 
-## Running the app
+![image](https://user-images.githubusercontent.com/49794183/127355127-f34cd79d-cb24-4425-b1f1-4dbc6ee0203e.png)
 
-```bash
-# development
-$ npm run start
+## Demonstrações
 
-# watch mode
-$ npm run start:dev
+Seguem em anexo algumas imagens demonstrando o funcionamento da aplicação:
 
-# production mode
-$ npm run start:prod
-```
+### Alunos
 
-## Test
+#### Criação
 
-```bash
-# unit tests
-$ npm run test
+![image](https://user-images.githubusercontent.com/49794183/127356860-f2bf6dcd-69b7-44ca-8e7f-fa1e93e42b52.png)
 
-# e2e tests
-$ npm run test:e2e
+#### Listagem
 
-# test coverage
-$ npm run test:cov
-```
+![image](https://user-images.githubusercontent.com/49794183/127356937-9e8a544c-5ff4-49b4-b245-e3e716fd75e6.png)
 
-## Support
+### Matrículas
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### Criação
 
-## Stay in touch
+![image](https://user-images.githubusercontent.com/49794183/127357093-736c6d98-98e9-4fec-a015-dcca4039b847.png)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### Listagem
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+![image](https://user-images.githubusercontent.com/49794183/127357337-4828522f-832d-4b09-895d-e4dbde96415c.png)
