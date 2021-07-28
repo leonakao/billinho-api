@@ -13,10 +13,10 @@ export class StudentController {
   ) {}
 
   @Get()
-  async list() {
+  async list(@Body() params) {
     return await this.listStudentsService.execute({
-      page: 1,
-      count: 3,
+      page: params.page || 1,
+      count: params.count || 3,
     });
   }
 
