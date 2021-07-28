@@ -1,7 +1,8 @@
+import { ICreateEnrollmentDTO } from '../dtos/icreate-enrollment.dto';
 import { Enrollment } from '../entities/enrollment.entity';
 
 interface ICreateEnrollmentService {
-  execute({ amount, installments, due_day }): Promise<Enrollment>;
+  execute(enrollmentData: ICreateEnrollmentDTO): Promise<Enrollment>;
 }
 
 export { ICreateEnrollmentService };

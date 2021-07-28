@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { ICreateBillDTO } from '../dtos/icreate-bill.dto';
 import { Enrollment } from './enrollment.entity';
 
@@ -9,6 +15,7 @@ export class Bill {
       this.amount = billData.amount;
       this.due_date = billData.due_date;
       this.status = billData.status;
+      this.enrollment_id = billData.enrollment_id;
     }
   }
 
@@ -28,5 +35,6 @@ export class Bill {
   enrollment_id: number;
 
   @ManyToOne(() => Enrollment, (enrollment) => enrollment.bills)
+  @JoinColumn({ name: 'enrollment_id' })
   enrollment: Enrollment;
 }

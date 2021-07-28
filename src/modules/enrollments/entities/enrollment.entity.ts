@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { ICreateEnrollmentDTO } from '../dtos/icreate-enrollment.dto';
 import { Bill } from './bill.entity';
@@ -36,6 +37,7 @@ export class Enrollment {
   student_id: number;
 
   @ManyToOne(() => Student, (student) => student.enrollments)
+  @JoinColumn({ name: 'student_id' })
   student: Student;
 
   @OneToMany(() => Bill, (bill) => bill.enrollment)

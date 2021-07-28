@@ -3,12 +3,12 @@ import { BillStatusTypes } from '../enums/bill-status-types.enum';
 import { BillFactory } from '../factories/bill.factory';
 import { GenerateBillDueDate } from './generate-bill-due-date.util';
 
-export function GenerateBills({
-  number: amount,
-  number: installments,
-  number: due_day,
-  number: enrollment_id,
-}): Bill[] {
+export function GenerateBills(
+  amount: number,
+  installments: number,
+  due_day: number,
+  enrollment_id: number,
+): Bill[] {
   const amountByInstallment = amount / installments;
 
   const bills = [];

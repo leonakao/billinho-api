@@ -1,5 +1,4 @@
-import { addMonths, getDaysInMonth } from 'date-fns';
-import { setDate } from 'date-fns/esm';
+import { addMonths, getDaysInMonth, setDate } from 'date-fns';
 
 export function GenerateBillDueDate(due_day: number, currentInstallment = 1) {
   let dueDate = new Date();
