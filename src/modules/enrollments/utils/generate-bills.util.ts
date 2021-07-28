@@ -7,6 +7,7 @@ export function GenerateBills({
   number: amount,
   number: installments,
   number: due_day,
+  number: enrollment_id,
 }): Bill[] {
   const amountByInstallment = amount / installments;
 
@@ -22,6 +23,7 @@ export function GenerateBills({
         amount: amountByInstallment,
         due_date: GenerateBillDueDate(due_day, currentInstallment),
         status: BillStatusTypes.Open,
+        enrollment_id,
       }),
     );
   }

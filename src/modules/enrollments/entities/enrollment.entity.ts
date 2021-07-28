@@ -16,6 +16,7 @@ export class Enrollment {
       this.amount = enrollmentData.amount;
       this.installments = enrollmentData.installments;
       this.due_day = enrollmentData.due_day;
+      this.student_id = enrollmentData.student_id;
     }
   }
 

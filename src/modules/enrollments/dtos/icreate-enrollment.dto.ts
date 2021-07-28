@@ -16,4 +16,8 @@ export class ICreateEnrollmentDTO {
   @Min(1)
   @Max(31)
   due_day: number;
+
+  @IsInt()
+  @IsNotEmpty()
+  student_id: number;
 }

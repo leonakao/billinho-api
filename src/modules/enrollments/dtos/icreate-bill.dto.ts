@@ -16,4 +16,8 @@ export class ICreateBillDTO {
   @IsIn(Object.values(BillStatusTypes))
   @IsNotEmpty()
   status: string;
+
+  @IsInt()
+  @IsNotEmpty()
+  enrollment_id: number;
 }

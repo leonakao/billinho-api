@@ -13,11 +13,17 @@ export class CreateEnrollmentService implements ICreateEnrollmentService {
     private repository: IEnrollmentRepository,
   ) {}
 
-  async execute({ amount, installments, due_day }): Promise<Enrollment> {
+  async execute({
+    amount,
+    installments,
+    due_day,
+    student_id,
+  }): Promise<Enrollment> {
     const enrollmentData = {
       amount,
       installments,
       due_day,
+      student_id,
     } as ICreateEnrollmentDTO;
 
     const enrollment = EnrollmentFactory.create(enrollmentData);
