@@ -6,6 +6,7 @@ import {
   ManyToOne,
   OneToMany,
   JoinColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { ICreateEnrollmentDTO } from '../dtos/icreate-enrollment.dto';
 import { Bill } from './bill.entity';
@@ -42,4 +43,7 @@ export class Enrollment {
 
   @OneToMany(() => Bill, (bill) => bill.enrollment)
   bills: Bill[];
+
+  @CreateDateColumn()
+  created_at: Date;
 }

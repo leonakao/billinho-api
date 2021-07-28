@@ -1,5 +1,11 @@
 import { Enrollment } from 'src/modules/enrollments/entities/enrollment.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  CreateDateColumn,
+} from 'typeorm';
 import { ICreateStudentDTO } from '../dtos/icreate-student-dto';
 
 @Entity('students')
@@ -30,4 +36,7 @@ export class Student {
 
   @OneToMany(() => Enrollment, (enrollment) => enrollment.student)
   enrollments: Enrollment[];
+
+  @CreateDateColumn()
+  created_at: Date;
 }
