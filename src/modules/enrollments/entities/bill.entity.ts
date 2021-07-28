@@ -31,7 +31,7 @@ export class Bill {
   @Column()
   status: string;
 
-  @Column('integer')
+  @Column('integer', { select: false })
   enrollment_id: number;
 
   @ManyToOne(() => Enrollment, (enrollment) => enrollment.bills)
